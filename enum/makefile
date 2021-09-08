@@ -11,8 +11,7 @@ TARGET := bin/$(shell basename $${PWD})
 SRCEXT := cpp
 SOURCES := $(shell find $(SRCDIR) -type f -name *.$(SRCEXT))
 OBJECTS := $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SOURCES:.$(SRCEXT)=.o))
-#CFLAGS := -g -std=c++14 -pthread -fconcepts # -Wall
-CFLAGS := -g -std=gnu++2a -pthread # -Wall
+CFLAGS := -g -std=c++11 # -Wall
 LIB := 
 INC := -I include
 

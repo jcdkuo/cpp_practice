@@ -11,6 +11,11 @@ int main(){
     map<string, string>::iterator iter;
     map<string, string>::reverse_iterator iter_r;
 
+
+    map<int, string> testm;
+
+    testm.insert(pair<int, string>(1,"test"));
+
     //insert element
     mapStudent.insert(pair<string, string>("r000", "student_zero"));
 
