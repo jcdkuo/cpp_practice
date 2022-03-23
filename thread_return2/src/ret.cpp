@@ -27,8 +27,7 @@ int main() {
         promise.set_value(result);
     };
 
-    //thread t1(do_calculation, 1E8);
-    thread t1(do_calculation, -1);
+    thread t1(do_calculation, 1E8);
 
     future<double> future = promise.get_future();
 

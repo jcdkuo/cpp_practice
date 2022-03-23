@@ -3,7 +3,7 @@
 #
 #
 CC := g++ # This is the main compiler
-# CC := clang --analyze # and comment out the linker last line for sanity
+#CC := clang --analyze # and comment out the linker last line for sanity
 SRCDIR := src
 BUILDDIR := build
 TARGET := bin/$(shell basename $${PWD})
@@ -11,7 +11,7 @@ TARGET := bin/$(shell basename $${PWD})
 SRCEXT := cpp
 SOURCES := $(shell find $(SRCDIR) -type f -name *.$(SRCEXT))
 OBJECTS := $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SOURCES:.$(SRCEXT)=.o))
-CFLAGS := -g -std=c++11 -Wall
+CFLAGS := -g -std=c++17 -Wall
 LIB := -lpthread
 INC := -I include
 

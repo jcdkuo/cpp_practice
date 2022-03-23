@@ -26,25 +26,19 @@ double calculate_pi(int terms) {
 }
 
 int main() {
-    promise<double> promise;
+    packaged_task<double(int)> task1(calculate_pi);
 
-    auto do_calculation = [&](int terms) {
-        try {
-            auto result = calculate_pi(terms);
-            promise.set_value(result);
-        } catch (...) {
-            promise.set_exception(current_exception());
-        }
-    };
+    future<double> future1 = task1.get_future();
 
-    thread t1(do_calculation, 0);
-
-    future<double> future = promise.get_future();
+    thread t1(move(task1), 1E6);
 
     try {
-        cout << setprecision(15) << future.get() << endl;
-    } catch (const exception &e) {
-        cout << e.what() << endl;
+        double result = future1.get();
+        cout << setprecision(15) << result << endl;
+    }
+    catch (exception &e)
+    {
+        cout << "ERROR: " << e.what() << endl;
     }
 
     t1.join();
